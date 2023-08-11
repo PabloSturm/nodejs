@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Libreria</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">El Libro</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/prestamos"
+                >Prestamos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  href="/libros">Libros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/personas">Personas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/datos_anexos">Datos Anexos</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Buscar"
+              aria-label="Buscar"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Buscar
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="col-md-8 mt-4 mx-auto card">
+        <form action="/modificar_prestamo/<%= prestamos.id_prestamo %>" method="post" class="card-body">
+          <h3 class="card-title">Modificar Prestamo</h3>
+          <div class="row">
+            <div class="form-group col-md-2 mt-3">
+              <label for="">Cod Libro</label>
+              <input type="text" name="id_libro" value="<%= prestamos.id_libro %>" class="form-control" />
+            </div>
+            <div class="form-group col-md-5 mt-3">
+              <label for="">Titulo</label>
+              <input type="text" name="titulo" value="<%= prestamos.titulo %>" class="form-control" readonly/>
+            </div>
+            <div class="form-group col-md-5 mt-3">
+              <label for="">Autor</label>
+              <input type="text" name="autor" value="<%= prestamos.autor %>" class="form-control" readonly/>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="form-group col-md-2 mt-3">
+              <label for="">Cod Persona</label>
+              <input type="text" name="id_persona" value="<%= prestamos.id_persona %>" class="form-control" />
+            </div>
+            <div class="form-group col-md-4 mt-3">
+              <label for="">Apellido</label>
+              <input type="text" name="apellido" value="<%= prestamos.apellido %>" class="form-control" readonly/>
+            </div>
+            <div class="form-group col-md-6 mt-3">
+              <label for="">Nombres</label>
+              <input type="text" name="nombre" value="<%= prestamos.nombre %>" class="form-control" readonly/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-9 mt-3">
+              <label for="">Observaciones</label>
+              <input type="text" name="observaciones" value="<%= prestamos.observaciones %>" class="form-control" />
+            </div>
+            <div class="form-group col-md-3 mt-3">
+              <label for="">Fecha Prestamo</label>
+              <input type="date" name="fec_retiro" value="<%= prestamos.fec_retiro.toJSON().slice(0,10) %>" class="form-control" />
+            </div>
+          </div>     
+          <input type="submit" class="btn btn-primary my-4" value="Guardar" />
+        </form>
+      </div>
+    </div>
+
+
+  </body>
+</html>
